@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 14 dec 2023 kl 11:22
+-- Tid vid skapande: 15 dec 2023 kl 09:51
 -- Serverversion: 10.4.24-MariaDB
 -- PHP-version: 8.1.6
 
@@ -20,6 +20,45 @@ SET time_zone = "+00:00";
 --
 -- Databas: `songsapi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `artists`
+--
+
+CREATE TABLE `artists` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `country` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumpning av Data i tabell `artists`
+--
+
+INSERT INTO `artists` (`id`, `name`, `country`) VALUES
+(1, 'Ghost', 'Sverige'),
+(2, 'Tove Styrke', 'Sverige');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumpning av Data i tabell `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Rock'),
+(2, 'Pop');
 
 -- --------------------------------------------------------
 
@@ -48,6 +87,18 @@ INSERT INTO `songs` (`id`, `name`, `artist`, `category`, `embed`) VALUES
 --
 
 --
+-- Index för tabell `artists`
+--
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index för tabell `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index för tabell `songs`
 --
 ALTER TABLE `songs`
@@ -56,6 +107,18 @@ ALTER TABLE `songs`
 --
 -- AUTO_INCREMENT för dumpade tabeller
 --
+
+--
+-- AUTO_INCREMENT för tabell `artists`
+--
+ALTER TABLE `artists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT för tabell `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT för tabell `songs`
